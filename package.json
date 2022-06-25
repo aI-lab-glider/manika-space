@@ -1,0 +1,22 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "main": "index.html",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@types/p5": "^1.4.2",
+    "p5": "^1.4.1",
+    "utils": "^0.3.1"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.6.1",
+    "typescript": "^4.7.4"
+  },
+  "keywords": [],
+  "description": ""
+}
