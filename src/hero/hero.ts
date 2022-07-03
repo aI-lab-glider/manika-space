@@ -8,15 +8,6 @@ export class Hero {
   public position: Vector2D;
 
   constructor(x: number, y: number) {
-    // this.sprite = createSprite(x, y);
-    // const animation = loadAnimation(
-    //   "data/hero1.jpg",
-    //   "data/hero2.jpg",
-    //   "data/hero3.jpg",
-    //   "data/hero4.jpg"
-    // );
-    // this.sprite.addAnimation("hero", animation);
-
     this.position = new Vector2D(x, y);
   }
 

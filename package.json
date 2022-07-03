@@ -7,6 +7,7 @@
   "dependencies": {
     "@types/p5": "^1.4.2",
     "p5": "^1.4.1",
+    "parcel-plugin-static-files-copy": "^2.6.0",
     "utils": "^0.3.1"
   },
   "scripts": {
