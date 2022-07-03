@@ -35,18 +35,23 @@ export class Environemnt {
   private addObstacles() {
     let sizeY = random(30, 50);
     let sizeX = random(50, 300);
-    // let offset = 100;
-    // for (let i = 0; i < 50; i ++){
+    let lastObstacle: Obstacle;
+    if (this.obstacles.length < 1) {
+      lastObstacle = new Obstacle(Environemnt.worldSizeX, 0, 0, 0);
+    } else {
+      lastObstacle = this.obstacles[this.obstacles.length - 1];
+    }
+    let offset = 100;
+    let newObstaclePosition =
+      offset + lastObstacle.position.x + lastObstacle.sizeX;
     this.obstacles.push(
       new Obstacle(
-        Environemnt.worldSizeX,
+        newObstaclePosition,
         Environemnt.worldSizeY - sizeY,
         sizeX,
         sizeY
       )
     );
-    //offset = offset + sizeX + Environemnt.worldSizeX
-    //}
   }
 
   public draw() {
