@@ -10,9 +10,13 @@ let heroSprite: p5.Image;
 
 function setup() {
   frameRate(10);
-  heroSprite = loadImage('assets/demo.png');
-
+  heroSprite = loadImage("assets/demo.png");
   createCanvas(Environemnt.worldSizeX, Environemnt.worldSizeY);
+}
+
+function resetGame() {
+  console.log("Game over");
+  environment.obstacles = [];
 }
 
 function draw() {
@@ -21,6 +25,11 @@ function draw() {
   const currentWeather = weatherProvider.getCurrentWeather();
   environment.update(currentWeather);
   environment.draw();
+  environment.obstacles.forEach((obstacle) => {
+    if (obstacle.isCollision(hero, obstacle) === true) {
+      resetGame();
+    }
+  });
 }
 
 // It will be explained later.
