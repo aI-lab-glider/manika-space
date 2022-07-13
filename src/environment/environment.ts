@@ -30,18 +30,19 @@ export class Environemnt {
     const speed = this.hero.update(currentWeather);
     this.obstacles.forEach((obstacle) => obstacle.update(speed));
     this.addObstacles();
+    this.hero.jump(speed);
   }
 
-  private addObstacles() {
-    let sizeY = random(30, 50);
-    let sizeX = random(50, 300);
+  public addObstacles() {
+    let sizeY = random(40, 60);
+    let sizeX = random(50, 100);
     let lastObstacle: Obstacle;
     if (this.obstacles.length < 1) {
       lastObstacle = new Obstacle(Environemnt.worldSizeX, 0, 0, 0);
     } else {
       lastObstacle = this.obstacles[this.obstacles.length - 1];
     }
-    let offset = 100;
+    let offset = random(100, 500);
     let newObstaclePosition =
       offset + lastObstacle.position.x + lastObstacle.sizeX;
     this.obstacles.push(

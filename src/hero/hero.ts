@@ -2,6 +2,7 @@ import { Vector2D } from "../utils/vector";
 import { Weather } from "../weather/weather";
 import "p5";
 import { Environemnt } from "../environment/environment";
+import { Obstacle } from "../obstacle/obstacle";
 
 
 export class Hero {
@@ -9,6 +10,7 @@ export class Hero {
   public position: Vector2D;
   private width = 5;
   private height = 10;
+  private moving = 7;
 
   constructor(x: number, y: number) {
     this.position = new Vector2D(x, y);
@@ -33,7 +35,23 @@ export class Hero {
     ];
   }
 
-  public jump() {}
+  private isJumping () {}
+
+  public jump(speed: Vector2D) {
+    if (
+      this.position.y > Environemnt.worldSizeY * 0.9 - 100 
+      //&&
+      //this.position.y <= Environemnt.worldSizeY * 0.9
+    ) {
+      this.position.y += speed.y + Environemnt.gravity.y;
+    } 
+    
+    else if (this.position.y = Environemnt.worldSizeY * 0.9 - 100) {
+      this.position.y += Environemnt.gravity.y;
+    } else if (this.position.y <= Environemnt.worldSizeY * 0.9 + this.height) {
+      this.position.y += speed.y
+    }
+  }
 
   public pickUp() {}
 
@@ -44,19 +62,23 @@ export class Hero {
   }
 
   public handleKeyDown() {
-    let moving = 7;
     if (keyIsDown(LEFT_ARROW)) {
-      return new Vector2D(-moving, 0);
+      return new Vector2D(-this.moving, 0);
     }
     if (keyIsDown(RIGHT_ARROW)) {
-      return new Vector2D(moving, 0);
+      return new Vector2D(this.moving, 0);
     }
     // if (keyIsDown(UP_ARROW)) {
-    //   return new Vector2D(0, -moving);
+    //   return new Vector2D(0, -this.moving);
     // }
     // if (keyIsDown(DOWN_ARROW)) {
-    //   return new Vector2D(0, moving);
+    //   return new Vector2D(0, this.moving);
     // }
+
+    if (keyIsDown(UP_ARROW)) {
+      return new Vector2D(0, -this.moving);
+    }
+
     return new Vector2D(0, 0);
   }
   
