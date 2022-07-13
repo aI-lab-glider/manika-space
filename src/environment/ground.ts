@@ -8,13 +8,13 @@ export class Ground {
     // do nothing
   }
 
-  public draw() {
-    fill("green");
-    rect(
-      0,
-      Environemnt.worldSizeY - this.height,
-      Environemnt.worldSizeX,
-      this.height
-    );
-  }
+  // public draw() {
+  //   fill("green");
+  //   rect(
+  //     0,
+  //     Environemnt.worldSizeY - this.height,
+  //     Environemnt.worldSizeX,
+  //     this.height
+  //   );
+  // }
 }

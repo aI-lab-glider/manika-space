@@ -7,7 +7,7 @@ import { Obstacle } from "../obstacle/obstacle";
 
 export class Environemnt {
   public static gravity: Vector2D = new Vector2D(0, 1);
-  public static worldSize: [number, number] = [400, 400];
+  public static worldSize: [number, number] = [1400, 600];
   private sky: Sky;
   private ground: Ground;
 
@@ -56,8 +56,8 @@ export class Environemnt {
 
   public draw() {
     this.sky.draw();
-    this.ground.draw();
+    //this.ground.draw();
     this.obstacles.forEach((obstacle) => obstacle.draw());
-    this.hero.draw();
+    //this.hero.draw();
   }
 }
