@@ -51,15 +51,15 @@ export class Sky {
   }
 
   public draw() {
-    noStroke();
-    drawGradient(
-      0,
-      0,
-      Environemnt.worldSizeX,
-      this.height,
-      color(7, 71, 245),
-      color(65, 112, 240)
-    );
+    //noStroke();
+    // drawGradient(
+    //   0,
+    //   0,
+    //   Environemnt.worldSizeX,
+    //   this.height,
+    //   color(7, 71, 245),
+    //   color(65, 112, 240)
+    // );
 
     this.clouds.forEach((cloud) => cloud.draw());
   }

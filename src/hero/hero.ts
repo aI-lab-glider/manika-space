@@ -3,8 +3,9 @@ import { Weather } from "../weather/weather";
 import "p5";
 import { Environemnt } from "../environment/environment";
 
+
 export class Hero {
-  //private sprite;
+  private sprite;
   public position: Vector2D;
   private width = 5;
   private height = 10;
@@ -58,14 +59,37 @@ export class Hero {
     // }
     return new Vector2D(0, 0);
   }
+  
+  animate() {
+    this.sprite.animation.play();
 
   // animate() {
   //   this.sprite.animation.play();
-  // }
+  }
 
   public draw() {
     stroke("blue");
     fill("blue");
     rect(this.position.x, this.position.y, this.width, this.height);
   }
-}
+
+  public show() {
+   this.sprite.position()
+  }
+
+//   class Sprite {
+//  constructor (animation, x, y, speed) {
+//   this.x = x 
+//   this.y = y
+//   this.len = this.animation.length;
+//   this.animation = animation;
+//   this.speed = speed;
+//   this.index = 0
+//  }
+//   show() {
+//     image( this.animation[this.index%this.len], this.x, this.y )
+//   }
+//   animate() {
+//    this.animation+= this.speed;
+//   }
+ }

@@ -4,5 +4,6 @@ declare global {
   interface Window {
     setup: () => void;
     draw: () => void;
+    preload: () => void;
   }
 }
