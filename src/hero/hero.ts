@@ -35,15 +35,14 @@ export class Hero {
     ];
   }
 
-  private isJumping () {}
+  private isJumping: boolean
 
   public jump(speed: Vector2D) {
-    if (
-      this.position.y > Environemnt.worldSizeY * 0.9 - 100 
-      //&&
-      //this.position.y <= Environemnt.worldSizeY * 0.9
-    ) {
-      this.position.y += speed.y + Environemnt.gravity.y;
+    if (this.position.y > Environemnt.worldSizeY * 0.9 - 100) {
+      this.position.y += speed.y;
+      if (this.position.y < Environemnt.worldSizeY * 0.9) {
+        this.position.y += Environemnt.gravity.y
+      }
     } 
     
     else if (this.position.y = Environemnt.worldSizeY * 0.9 - 100) {
@@ -76,7 +75,16 @@ export class Hero {
     // }
 
     if (keyIsDown(UP_ARROW)) {
+      this.isJumping = true
+      //return new Vector2D(0, -this.moving);
+    }
+
+    if (this.isJumping) {
       return new Vector2D(0, -this.moving);
+    }
+
+    if (this.position.y < 300) {
+      this.isJumping = false
     }
 
     return new Vector2D(0, 0);
