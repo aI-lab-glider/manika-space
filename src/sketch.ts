@@ -31,6 +31,11 @@ function setup() {
    //hero = new Hero( 100,100)
 }
 
+function resetGame() {
+  console.log("Game over");
+  environment.obstacles = [];
+}
+
 function draw() {
   background(200);
    
@@ -42,6 +47,11 @@ function draw() {
   const currentWeather = weatherProvider.getCurrentWeather();
   environment.update(currentWeather);
   environment.draw();
+  environment.obstacles.forEach((obstacle) => {
+    if (obstacle.isCollision(hero, obstacle) === true) {
+      resetGame();
+    }
+  });
 }
 
 // It will be explained later.
