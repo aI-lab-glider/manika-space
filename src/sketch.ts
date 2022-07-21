@@ -3,11 +3,11 @@ import { WeatherProvider } from "./weather/weatherProvider";
 import { Hero } from "./hero/hero";
 import p5 from "p5";
 
-const hero = new Hero(Environemnt.worldSizeX / 2, Environemnt.worldSizeY * 0.8);
+const hero = new Hero(Environemnt.worldSizeX / 2, Environemnt.worldSizeY * 0.65);
 const environment = new Environemnt(hero);
 const weatherProvider = new WeatherProvider();
 let heroSprite: p5.Image;
-//let hero;
+
 let animation = [];
 let spritesheet;
 let spritedata;
@@ -19,7 +19,7 @@ let spritedata;
 
 function setup() {
   createCanvas(Environemnt.worldSizeX, Environemnt.worldSizeY);
-  frameRate(10);
+  frameRate(15);
   heroSprite = loadImage('assets/bg.png');
 
   let frames = spritedata.frames;
