@@ -2,16 +2,20 @@ import { Vector2D } from "../utils/vector";
 import { Weather } from "../weather/weather";
 import "p5";
 import { Environemnt } from "../environment/environment";
+import { Obstacle } from "../obstacle/obstacle";
 
 
 export class Hero {
   private sprite;
   public position: Vector2D;
-  private width = 5;
-  private height = 10;
+  public width = 70;
+  public height = 96;
+  private moving = 30;
+  private initialY: number;
 
   constructor(x: number, y: number) {
     this.position = new Vector2D(x, y);
+    this.initialY = y;
   }
 
   public move(speed: Vector2D) {
@@ -33,9 +37,27 @@ export class Hero {
     ];
   }
 
-  public jump() {}
+  private isJumping: boolean
 
-  public pickUp() {}
+  public jump(speed: Vector2D) {
+    //if (this.position.y > Environemnt.worldSizeY - 300) {
+    this.position.y += speed.y
+    //} 
+    //else if (this.position.y < Environemnt.worldSizeY - 300 && this.position.y > Environemnt.worldSizeY * 0.8)
+
+    // else if (this.position.y = Environemnt.worldSizeY - 299) {
+    //   this.position.y += Environemnt.gravity.y;
+    // // } else if (this.position.y <= Environemnt.worldSizeY * 0.9 + this.height) {
+    // //   this.position.y += speed.y
+    // // }
+    // } 
+
+    // else if (this.isJumping === false || this.position.y > Environemnt.worldSizeY * 0.8) {
+    //   this.position.y += Environemnt.gravity
+    // }
+  }
+
+  public pickUp() { }
 
   public update(weather: Weather) {
     const speed = this.handleKeyDown();
@@ -44,52 +66,35 @@ export class Hero {
   }
 
   public handleKeyDown() {
-    let moving = 7;
+    let speed = new Vector2D(0, 0);
     if (keyIsDown(LEFT_ARROW)) {
-      return new Vector2D(-moving, 0);
+      speed = speed.add(new Vector2D(-this.moving, 0));
     }
     if (keyIsDown(RIGHT_ARROW)) {
-      return new Vector2D(moving, 0);
+      speed = speed.add(new Vector2D(this.moving, 0));
     }
-    // if (keyIsDown(UP_ARROW)) {
-    //   return new Vector2D(0, -moving);
-    // }
-    // if (keyIsDown(DOWN_ARROW)) {
-    //   return new Vector2D(0, moving);
-    // }
-    return new Vector2D(0, 0);
+    if (keyIsDown(UP_ARROW)) {
+      this.isJumping = true
+    }
+
+    if (this.isJumping && this.position.y > Environemnt.worldSizeY - 300) {
+      speed = speed.add(new Vector2D(2, -this.moving));
+    } else {
+      this.isJumping = false
+    }
+
+    if (this.isJumping === false && this.position.y < this.initialY) {
+      speed = speed.add(new Vector2D(2, this.moving))
+    }
+
+    return speed;
   }
-  
+
   animate() {
     this.sprite.animation.play();
-
-  // animate() {
-  //   this.sprite.animation.play();
-  }
-
-  public draw() {
-    stroke("blue");
-    fill("blue");
-    rect(this.position.x, this.position.y, this.width, this.height);
   }
 
   public show() {
-   this.sprite.position()
+    this.sprite.position()
   }
-
-//   class Sprite {
-//  constructor (animation, x, y, speed) {
-//   this.x = x 
-//   this.y = y
-//   this.len = this.animation.length;
-//   this.animation = animation;
-//   this.speed = speed;
-//   this.index = 0
-//  }
-//   show() {
-//     image( this.animation[this.index%this.len], this.x, this.y )
-//   }
-//   animate() {
-//    this.animation+= this.speed;
-//   }
- }
+}
