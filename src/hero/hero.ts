@@ -8,9 +8,9 @@ import { Obstacle } from "../obstacle/obstacle";
 export class Hero {
   private sprite;
   public position: Vector2D;
-  private width = 5;
-  private height = 10;
-  private moving = 7;
+  public width = 70;
+  public height = 96;
+  private moving = 10;
 
   constructor(x: number, y: number) {
     this.position = new Vector2D(x, y);
@@ -38,19 +38,22 @@ export class Hero {
   private isJumping: boolean
 
   public jump(speed: Vector2D) {
-    if (this.position.y > Environemnt.worldSizeY * 0.9 - 100) {
-      this.position.y += speed.y;
-      if (this.position.y < Environemnt.worldSizeY * 0.9) {
-        this.position.y += Environemnt.gravity.y
-      }
-    } 
+    //if (this.position.y > Environemnt.worldSizeY - 300) {
+      this.position.y += speed.y 
+    //} 
+    //else if (this.position.y < Environemnt.worldSizeY - 300 && this.position.y > Environemnt.worldSizeY * 0.8)
     
-    else if (this.position.y = Environemnt.worldSizeY * 0.9 - 100) {
-      this.position.y += Environemnt.gravity.y;
-    } else if (this.position.y <= Environemnt.worldSizeY * 0.9 + this.height) {
-      this.position.y += speed.y
-    }
-  }
+    // else if (this.position.y = Environemnt.worldSizeY - 299) {
+    //   this.position.y += Environemnt.gravity.y;
+    // // } else if (this.position.y <= Environemnt.worldSizeY * 0.9 + this.height) {
+    // //   this.position.y += speed.y
+    // // }
+    // } 
+    
+    // else if (this.isJumping === false || this.position.y > Environemnt.worldSizeY * 0.8) {
+    //   this.position.y += Environemnt.gravity
+    // }
+}
 
   public pickUp() {}
 
@@ -76,15 +79,20 @@ export class Hero {
 
     if (keyIsDown(UP_ARROW)) {
       this.isJumping = true
-      //return new Vector2D(0, -this.moving);
     }
 
     if (this.isJumping) {
-      return new Vector2D(0, -this.moving);
+      console.log("true")
+      return new Vector2D(2, -this.moving);
     }
 
-    if (this.position.y < 300) {
+    if (this.position.y < Environemnt.worldSizeY - 300) {
       this.isJumping = false
+    }
+
+    if (this.isJumping === false) {
+      console.log("false")
+      return new Vector2D(2, Environemnt.gravity)
     }
 
     return new Vector2D(0, 0);
@@ -92,34 +100,9 @@ export class Hero {
   
   animate() {
     this.sprite.animation.play();
-
-  // animate() {
-  //   this.sprite.animation.play();
-  }
-
-  public draw() {
-    stroke("blue");
-    fill("blue");
-    rect(this.position.x, this.position.y, this.width, this.height);
   }
 
   public show() {
    this.sprite.position()
   }
-
-//   class Sprite {
-//  constructor (animation, x, y, speed) {
-//   this.x = x 
-//   this.y = y
-//   this.len = this.animation.length;
-//   this.animation = animation;
-//   this.speed = speed;
-//   this.index = 0
-//  }
-//   show() {
-//     image( this.animation[this.index%this.len], this.x, this.y )
-//   }
-//   animate() {
-//    this.animation+= this.speed;
-//   }
  }
