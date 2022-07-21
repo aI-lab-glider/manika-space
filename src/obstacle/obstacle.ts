@@ -8,7 +8,7 @@ export class Obstacle {
     x: number,
     y: number,
     public sizeX: number,
-    private sizeY: number
+    public sizeY: number
   ) {
     this.position = new Vector2D(x, y);
   }
@@ -31,17 +31,14 @@ export class Obstacle {
   }
 
   isCollision(hero, obstacle) {
-    function checkForCollision(hero, obstacle) {
-      const vs = hero.getVerticies();
-      return vs.some((v) => {
-        const [x, y] = v;
-        const isInXs =
-          x > obstacle.position.x && x < obstacle.position.x + obstacle.sizeX;
-        const isInYs =
-          y > obstacle.position.y && y < obstacle.position.y + obstacle.sizeY;
-        return isInXs && isInYs;
-      });
-    }
-    return checkForCollision(hero, obstacle);
+    const vs = hero.getVerticies();
+    return vs.some((v) => {
+      const [x, y] = v;
+      const isInXs =
+        x > obstacle.position.x && x < obstacle.position.x + obstacle.sizeX;
+      const isInYs =
+        y > obstacle.position.y && y < obstacle.position.y + obstacle.sizeY;
+      return isInXs && isInYs;
+    });
   }
 }

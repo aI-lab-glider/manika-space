@@ -12,43 +12,43 @@ let animation = [];
 let spritesheet;
 let spritedata;
 
-  function preload() {
-  spritedata = loadJSON('amongus/amongus.json');
-  spritesheet = loadImage('amongus/amongus.png');
-  }
+function preload() {
+  spritedata = loadJSON("amongus/amongus.json");
+  spritesheet = loadImage("amongus/amongus.png");
+}
 
 function setup() {
   createCanvas(Environemnt.worldSizeX, Environemnt.worldSizeY);
+
   frameRate(15);
   heroSprite = loadImage('assets/bg.png');
-
   let frames = spritedata.frames;
-  for ( let i = 0; i < frames.length; i++ ) {
+  for (let i = 0; i < frames.length; i++) {
     let pos = frames[i].position;
     let img = spritesheet.get(pos.x, pos.y, pos.w, pos.h);
     animation.push(img);
   }
-   //hero = new Hero( 100,100)
 }
 
 function resetGame() {
-  console.log("Game over");
   environment.obstacles = [];
 }
 
 function draw() {
   background(200);
-   
-  // heroSprite.show();
-  // heroSprite.animate();
-  debugger
   image(heroSprite, 0, 0, Environemnt.worldSizeX, Environemnt.worldSizeY);
-  image(animation[frameCount % animation.length], hero.position.x, hero.position.y, 128, 143);
+  image(
+    animation[frameCount % animation.length],
+    hero.position.x,
+    hero.position.y,
+    hero.width,
+    hero.height
+  );
   const currentWeather = weatherProvider.getCurrentWeather();
   environment.update(currentWeather);
   environment.draw();
   environment.obstacles.forEach((obstacle) => {
-    if (obstacle.isCollision(hero, obstacle) === true) {
+    if (obstacle.isCollision(hero, obstacle)) {
       resetGame();
     }
   });
