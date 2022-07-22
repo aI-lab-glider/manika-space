@@ -20,7 +20,7 @@ function preload() {
 function setup() {
   createCanvas(Environemnt.worldSizeX, Environemnt.worldSizeY);
 
-  frameRate(15);
+  frameRate(10);
   heroSprite = loadImage('assets/bg.png');
   let frames = spritedata.frames;
   for (let i = 0; i < frames.length; i++) {
