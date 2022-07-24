@@ -60,12 +60,12 @@ export class Hero {
       this.isJumping = true;
     }
     if (this.isJumping && this.position.y > Environemnt.worldSizeY - 380) {
-      speed = speed.add(new Vector2D(25, -this.moving));
+      speed = speed.add(new Vector2D(20, -this.moving));
     } else {
       this.isJumping = false;
     }
     if (this.isJumping === false && this.position.y < this.initialY) {
-      speed = speed.add(new Vector2D(25, this.moving + Environemnt.gravity.y));
+      speed = speed.add(new Vector2D(20, this.moving + Environemnt.gravity.y));
     }
 
     return speed;

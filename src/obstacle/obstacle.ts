@@ -19,7 +19,7 @@ export class Obstacle {
   }
 
   update(speed: Vector2D) {
-    this.position.x -= 30 + speed.x;
+    this.position.x -= 25 + speed.x;
   }
 
   isCollision(hero, obstacle) {
