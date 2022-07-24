@@ -6,7 +6,7 @@ import { Hero } from "../hero/hero";
 import { Obstacle } from "../obstacle/obstacle";
 
 export class Environemnt {
-  public static gravity: Vector2D = new Vector2D(0, 3);
+  public static gravity: Vector2D = new Vector2D(0, 20);
   public static worldSize: [number, number] = [1250, 540];
   private sky: Sky;
   private ground: Ground;
@@ -35,14 +35,14 @@ export class Environemnt {
 
   public addObstacles() {
     let sizeY = random(130, 160);
-    let sizeX = random(50, 100);
+    let sizeX = random(50, 90);
     let lastObstacle: Obstacle;
     if (this.obstacles.length < 1) {
-      lastObstacle = new Obstacle(Environemnt.worldSizeX, 0, 0, 0);
+      lastObstacle = new Obstacle(Environemnt.worldSizeX - Environemnt.worldSizeX * 0.5, 0, 0, 0);
     } else {
       lastObstacle = this.obstacles[this.obstacles.length - 1];
     }
-    let offset = random(100, 500);
+    let offset = random(500, 1500);
     let newObstaclePosition =
       offset + lastObstacle.position.x + lastObstacle.sizeX;
     this.obstacles.push(

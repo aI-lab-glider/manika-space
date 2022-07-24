@@ -1,5 +1,4 @@
 import { Vector2D } from "../utils/vector";
-import { Environemnt } from "../environment/environment";
 
 export class Obstacle {
   public position: Vector2D;
@@ -20,14 +19,7 @@ export class Obstacle {
   }
 
   update(speed: Vector2D) {
-    this.position.x -= speed.x;
-    // if (this.position.y < Environemnt.worldSizeY - this.sizeY) {
-    //   this.position.y -= speed.y - Environemnt.gravity.y;
-    // } else if (this.position.y > Environemnt.worldSizeY - this.sizeY) {
-    //   this.position.y -= speed.y + Environemnt.gravity.y;
-    // } else {
-    //   this.position.y -= speed.y;
-    // }
+    this.position.x -= 25 + speed.x;
   }
 
   isCollision(hero, obstacle) {

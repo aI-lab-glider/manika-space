@@ -6,6 +6,7 @@
   "private": false,
   "dependencies": {
     "@types/p5": "^1.4.2",
+    "hero": "^0.0.0",
     "p5": "^1.4.1",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "utils": "^0.3.1"
