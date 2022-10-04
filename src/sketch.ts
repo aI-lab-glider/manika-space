@@ -12,9 +12,9 @@ import p5 from "p5";
  * */ 
 const hero = new Hero(Environemnt.worldSizeX / 2, Environemnt.worldSizeY * 0.65);
 const environment = new Environemnt(hero);
-
+const score = 0;
 //const locations = [ 'assets/bg.png','assets/bg2.png' ]  
-let currentLocations = 0 
+let currentLocations = 0
 
 const weatherProvider = new WeatherProvider();
 let heroSprite: p5.Image;
@@ -33,14 +33,13 @@ function setup() {
   createCanvas(Environemnt.worldSizeX, Environemnt.worldSizeY);
 
   frameRate(10);
- console.log(hero.score)
-//   if(score<500) {
-     heroSprite = loadImage('assets/bg.png');
-//   }
-// else if(score<1000 && score > 500) {
+  if (score < 500) {
+    heroSprite = loadImage('assets/bg.png');
+  }
+  else if (score < 1000 && score > 500) {
 
-// heroSprite = loadImage('assets/bg2.png');
-// }
+    heroSprite = loadImage('assets/bg2.png');
+  }
   let frames = spritedata.frames;
   for (let i = 0; i < frames.length; i++) {
     let pos = frames[i].position;

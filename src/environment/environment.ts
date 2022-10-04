@@ -37,10 +37,10 @@ export class Environemnt {
 
   public addObstacles() {
     let sizeY = random(130, 160);
-    let sizeX = random(50, 100);
+    let sizeX = random(50, 90);
     let lastObstacle: Obstacle;
     if (this.obstacles.length < 1) {
-      lastObstacle = new Obstacle(Environemnt.worldSizeX - 500, 0, 0, 0);
+      lastObstacle = new Obstacle(Environemnt.worldSizeX - Environemnt.worldSizeX * 0.5, 0, 0, 0);
     } else {
       lastObstacle = this.obstacles[this.obstacles.length - 1];
     }

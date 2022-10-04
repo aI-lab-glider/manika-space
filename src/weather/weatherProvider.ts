@@ -9,7 +9,7 @@ export class WeatherProvider {
   private windDirection: Vector2D = new Vector2D(1, 0);
 
   private calculateWindStrenght() {
-    return abs(sin(frameCount));
+    return abs(sin(frameCount)) * 10;
   }
 
   private getCloudiness() {

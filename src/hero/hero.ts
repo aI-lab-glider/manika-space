@@ -22,16 +22,6 @@ export class Hero {
     this.initialY = y;
   }
 
-  public move(speed: Vector2D) {
-    this.position = this.position.add(speed);
-    if (this.position.x > Environemnt.worldSizeX) {
-      this.position.x = 0;
-    }
-    if (this.position.x < 0) {
-      this.position.x = Environemnt.worldSizeX;
-    }
-  }
-
   public getVerticies() {
     return [
       [this.position.x, this.position.y],
@@ -47,7 +37,7 @@ export class Hero {
     this.position.y += speed.y;
   }
 
-  public pickUp() {}
+  public pickUp() { }
 
   public update(weather: Weather) {
     const speed = this.handleKeyDown();
@@ -66,12 +56,12 @@ export class Hero {
       this.isJumping = true;
     }
     if (this.isJumping && this.position.y > Environemnt.worldSizeY - 380) {
-      speed = speed.add(new Vector2D(25, -this.moving));
+      speed = speed.add(new Vector2D(20, -this.moving));
     } else {
       this.isJumping = false;
     }
     if (this.isJumping === false && this.position.y < this.initialY) {
-      speed = speed.add(new Vector2D(25, this.moving + Environemnt.gravity.y));
+      speed = speed.add(new Vector2D(20, this.moving + Environemnt.gravity.y));
     }
 
     return speed;
