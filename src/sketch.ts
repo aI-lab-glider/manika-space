@@ -2,7 +2,14 @@ import { Environemnt } from "./environment/environment";
 import { WeatherProvider } from "./weather/weatherProvider";
 import { Hero } from "./hero/hero";
 import p5 from "p5";
-
+/**
+ * todo:
+ * місце де герой може тримати рахунок +
+ * виведення рахунку
+ * рахунок не тільки під час стрибків
+ * обнуляння рахунку
+ * дизайн рахунку
+ * */ 
 const hero = new Hero(Environemnt.worldSizeX / 2, Environemnt.worldSizeY * 0.65);
 const environment = new Environemnt(hero);
 
@@ -15,6 +22,7 @@ let heroSprite: p5.Image;
 let animation = [];
 let spritesheet;
 let spritedata;
+ 
 
 function preload() {
   spritedata = loadJSON("amongus/amongus.json");
@@ -25,13 +33,14 @@ function setup() {
   createCanvas(Environemnt.worldSizeX, Environemnt.worldSizeY);
 
   frameRate(10);
-  if(score<500) {
-    heroSprite = loadImage('assets/bg.png');
-  }
-else if(score<1000 && score > 500) {
+ console.log(hero.score)
+//   if(score<500) {
+     heroSprite = loadImage('assets/bg.png');
+//   }
+// else if(score<1000 && score > 500) {
 
-heroSprite = loadImage('assets/bg2.png');
-}
+// heroSprite = loadImage('assets/bg2.png');
+// }
   let frames = spritedata.frames;
   for (let i = 0; i < frames.length; i++) {
     let pos = frames[i].position;

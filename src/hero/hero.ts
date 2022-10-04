@@ -10,6 +10,12 @@ export class Hero {
   public height = 122;
   private moving = 50;
   private initialY = Environemnt.worldSizeY * 0.65;
+  public score: number = 0;
+
+
+  public updateScore(speed: Vector2D){
+    this.score += speed.x;
+  }
 
   constructor(x: number, y: number) {
     this.position = new Vector2D(x, y);

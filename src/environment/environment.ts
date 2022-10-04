@@ -31,6 +31,8 @@ export class Environemnt {
     this.obstacles.forEach((obstacle) => obstacle.update(speed));
     this.addObstacles();
     this.hero.jump(speed);
+    console.log(this.hero.score)
+    this.hero.updateScore(speed)
   }
 
   public addObstacles() {
