@@ -10,20 +10,16 @@ export class Hero {
   public height = 122;
   private moving = 50;
   private initialY = Environemnt.worldSizeY * 0.65;
+  public score: number = 0;
+
+
+  public updateScore(speed: Vector2D){
+    this.score += speed.x;
+  }
 
   constructor(x: number, y: number) {
     this.position = new Vector2D(x, y);
     this.initialY = y;
-  }
-
-  public move(speed: Vector2D) {
-    this.position = this.position.add(speed);
-    if (this.position.x > Environemnt.worldSizeX) {
-      this.position.x = 0;
-    }
-    if (this.position.x < 0) {
-      this.position.x = Environemnt.worldSizeX;
-    }
   }
 
   public getVerticies() {
@@ -41,7 +37,7 @@ export class Hero {
     this.position.y += speed.y;
   }
 
-  public pickUp() {}
+  public pickUp() { }
 
   public update(weather: Weather) {
     const speed = this.handleKeyDown();
